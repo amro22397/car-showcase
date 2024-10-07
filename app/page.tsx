@@ -1,12 +1,22 @@
+
 import React from 'react'
 import Hero from '../components/Hero'
 import SearchBar from '@/components/SearchBar'
 import CustomFilter from '@/components/CustomFilter'
 import { fetchCars } from '@/utils'
 import CarCard from '@/components/CarCard'
+import ShowMore from '@/components/ShowMore'
 
-const page = async () => {
-  const allCars = await fetchCars();
+import { fuels, yearsOfProduction } from '@/constants'
+
+const page = async ({ searchParams }) => {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   return (
@@ -25,10 +35,8 @@ const page = async () => {
           <SearchBar />
 
           <div className='home__filter-container'>
-            {/*
-            <CustomFilter title='fuel' options={fuels} />
-            <CustomFilter title='year' options={yearsOfProduction} />
-            */}
+          <CustomFilter title='fuel' options={fuels} />
+          <CustomFilter title='year' options={yearsOfProduction} />
           </div>          
         </div>
 
@@ -39,6 +47,12 @@ const page = async () => {
                 <CarCard car={car} />
               ))}
             </div>
+
+            <ShowMore
+              pageNumber={(searchParams?.limit || 10) / 10}
+              isNext={(searchParams?.limit || 10) > allCars.length}
+            /> 
+
           </section>
         ): (
           <div className="home_error-container">
