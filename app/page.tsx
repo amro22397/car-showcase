@@ -21,7 +21,6 @@ const page = async ({ searchParams }) => {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   return (
     <div className='overflow-hidden'>
-      <pre className='hidden'>{JSON.stringify(allCars, null, 2)}</pre>
 
       <Hero />
 
@@ -41,7 +40,11 @@ const page = async ({ searchParams }) => {
         </div>
 
         {!isDataEmpty ? (
-          <section className="">
+          
+          <section className="pt-14">
+            <span className="text-[16px] font-bold mx-auto text-center text-gray-800 mx-3
+      ">Car images can't be shown now.. We'll try to fix this soon...</span>
+
             <div className="home__cars-wrapper">
               {allCars?.map(car => (
                 <CarCard car={car} />
