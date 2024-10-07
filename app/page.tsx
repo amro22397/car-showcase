@@ -6,6 +6,8 @@ import CustomFilter from '@/components/CustomFilter'
 import { fetchCars } from '@/utils'
 import CarCard from '@/components/CarCard'
 import ShowMore from '@/components/ShowMore'
+import CustomButton from '@/components/CustomButton'
+import ResetButton from '@/components/ResetButton'
 
 import { fuels, yearsOfProduction } from '@/constants'
 
@@ -19,6 +21,8 @@ const page = async ({ searchParams }) => {
   });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
+  
   return (
     <div className='overflow-hidden'>
 
@@ -36,6 +40,8 @@ const page = async ({ searchParams }) => {
           <div className='home__filter-container'>
           <CustomFilter title='fuel' options={fuels} />
           <CustomFilter title='year' options={yearsOfProduction} />
+
+          <ResetButton />
           </div>          
         </div>
 
