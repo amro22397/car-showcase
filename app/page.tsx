@@ -9,6 +9,8 @@ import ShowMore from '@/components/ShowMore'
 import CustomButton from '@/components/CustomButton'
 import ResetButton from '@/components/ResetButton'
 
+import { HomeProps } from '@/types'
+
 import { fuels, yearsOfProduction } from '@/constants'
 
 const page = async ({ searchParams }: HomeProps) => {
