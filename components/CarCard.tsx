@@ -10,6 +10,8 @@ import { calculateCarRent } from '@/utils';
 import CarDetails from './CarDetails';
 import { generateCarImageUrl } from '@/utils';
 
+import { CarProps } from '@/types';
+
 interface CarCardProps {
     car: CarProps;
 }
