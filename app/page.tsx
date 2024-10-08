@@ -11,7 +11,7 @@ import ResetButton from '@/components/ResetButton'
 
 import { fuels, yearsOfProduction } from '@/constants'
 
-const page = async ({ searchParams }) => {
+const page = async ({ searchParams }: HomeProps) => {
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
