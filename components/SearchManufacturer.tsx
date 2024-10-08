@@ -1,6 +1,6 @@
 'use client'
 
-import { SearchManufacturerProps } from '@/types'
+import { SearchManufacturerProps } from '../types'
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import React, { useState, Fragment } from 'react'
